@@ -67,7 +67,7 @@
             <br />
             <div >
                 <label>投手自責分率為:</label>
-                <input type="text" size="10" id="result" />
+                <input type="text" size="10" id="ERA" />
             </div>
             <p id="text"></p>
 
@@ -81,16 +81,21 @@
 
                     var result;
                     result = n2 * (3 / n1);
-                    document.getElementById('result').value = result;
-                    if (result >= 10) {
+                    if (result > 10) {
+                        document.getElementById('ERA').value = result;
                         result = document.getElementById('text');
-                        text.innerHTML="有待加強!";
+                        text.innerHTML = "有待加強!";
 
-                    } else if (result <= 1) {
+                    } else if (result < 1) {
+                        document.getElementById('ERA').value = result;
                         result = document.getElementById('text');
                         text.innerHTML = "太強了吧!";
-                    } else
-                        document.getElementById('result').value = result;
+                    } else {
+                        document.getElementById('ERA').value = result;
+                        result = document.getElementById('text');
+                        text.innerHTML = ":)";
+                        return result;
+                    }
                 }
             </script>
         </div>
@@ -119,7 +124,7 @@
             <br />
             <div>
                 <label for="result2">棒球打擊率為</label>
-                <input type="text" size="10" id="result2" />
+                <input type="text" size="10" id="hit" />
             </div>
             <p id="text2"></p>
             <script>
@@ -127,21 +132,26 @@
                     var s1 = document.getElementById('num1').value;
                     var s2 = document.getElementById('num2').value;
 
-                    var n1 = parseInt(s1);
-                    var n2 = parseInt(s2);
+                    var n1 = parseFloat(s1);
+                    var n2 = parseFloat(s2);
 
-                    var result2;
+                    var result2=parseFloat();
                     result2 = s1 / s2;
-                    document.getElementById('result2').value = result2;
-                    if (result2 >= 0.5) {
+                    if (result2 > 0.5) {
+                        document.getElementById('hit').value = result2;
                         result2 = document.getElementById('text2');
                         text2.innerHTML = "太強了吧!";
 
-                    } else if (result2 <= 0.1) {
+                    } else if (result2 <= 0.2) {
+                        document.getElementById('hit').value = result2;
                         result2 = document.getElementById('text2');
                         text2.innerHTML = "有待加強!";
-                    } else
-                        document.getElementById('result2').value = result2;
+                    } else {
+                        document.getElementById('hit').value = result2;
+                        result2 = document.getElementById('text2');
+                        text2.innerHTML = ":)";
+                        return result2;
+                    }
                 }
             </script>
         </div>
