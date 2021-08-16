@@ -5,156 +5,150 @@
     <meta charset="utf-8" />
     <base href="https://millyq.github.io/baseball/" />
     <title>西區&十九甲棒球 投手自責分/打擊率計算機</title>
-    <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 991px)">
+    <link href="stylesheets/jquery-ui/base/jquery-ui.min.css" rel="stylesheet" />
     <style>
-        .st1 {
-            width: 450px;
-            margin: 20px;
-            padding-bottom: 10px;
-        }
         .main-box {
             margin: 25px auto;
-            width: 800px;
-            height: 350px;
-            padding: 50px;
+            width: 600px;
+            height: 700px;
             box-shadow: 5px 5px 10px #999;
             border: 1px solid #fff;
             text-align: center;
             font-size: 1.3em;
         }
-        p{
-            color:red;
+
+        p {
+            color: red;
         }
 
         img {
             width: 200px;
             height: 300px;
-            float: left;
         }
-        figure {
-            float: left;
-        }
+
         figcaption {
             font-size: 24px;
             font-family: DFKai-sb;
             font-style: italic;
-            color:darkgreen;
+            color: darkgreen;
         }
+        button{
+            width:200px;
+            background-color:green;
+            color:white;
+        }
+       
     </style>
 </head>
 <body>
     <div class="main-box">
-            <figure>
-                <img src="dog.jpg" />
-                <figcaption>十九甲威浮球聯盟</figcaption>
-            </figure>
-        <div >
-            <h3>投手自責分率計算</h3>
-            <h4>計算公式 = 失分 × 3 ÷ 投球局數</h4>
-            <div >
-                <label>總投球局數:</label>
-                <input type="text" size="10" id="number1" value="" />
+            <div style="float: left; height: 650px; padding:130px 0px 150px 0px ">
+                <figure>
+                    <img src="dog.jpg" />
+                    <figcaption>十九甲威浮球聯盟</figcaption>
+                </figure>
             </div>
-            <br />
-            <div >
-                <label>失分:</label>
-                <input type="text" size="10" id="number2" value="" />
-            </div>
-            <br />
-            <div >
-                <button onclick=" ERA()">計算</button>
-            </div>
-            <br />
-            <div >
-                <label>投手自責分率為:</label>
-                <input type="text" size="10" id="ERA" />
-            </div>
-            <p id="text"></p>
-
-            <script>
-                function ERA() {
-                    var s1 = document.getElementById('number1').value;
-                    var s2 = document.getElementById('number2').value;
-
-                    var n1 = parseInt(s1);
-                    var n2 = parseInt(s2);
-
-                    var result;
-                    result = n2 * (3 / n1);
-                    if (result > 10) {
-                        document.getElementById('ERA').value = result;
-                        result = document.getElementById('text');
-                        text.innerHTML = "有待加強!";
-
-                    } else if (result < 1) {
-                        document.getElementById('ERA').value = result;
-                        result = document.getElementById('text');
-                        text.innerHTML = "太強了吧!";
-                    } else {
-                        document.getElementById('ERA').value = result;
-                        result = document.getElementById('text');
-                        text.innerHTML = ":)";
-                        return result;
-                    }
-                }
-            </script>
-        </div>
-        </div>
-    <div class="main-box">
-        <figure>
-            <img src="dog.jpg">
-            <figcaption>十九甲威浮球聯盟</figcaption>
-        </figure>
-        <div>
-            <h3>棒球打擊率計算器</h3>
-            <h4>擊球率=擊球總數/擊球總數</h4>
-            <div >
-                <label for="num1">總安打數hits:</label>
-                <input type="text" size="10" id="num1" value="" />
-            </div>
-            <br />
-            <div >
-                <label for="num2">總打數at bats:</label>
-                <input type="text" size="10" id="num2" value="" />
-            </div>
-            <br />
             <div>
-                <button onclick=" Hit()">計算</button>
-            </div>
-            <br />
-            <div>
-                <label for="result2">棒球打擊率為</label>
-                <input type="text" size="10" id="hit" />
-            </div>
-            <p id="text2"></p>
-            <script>
-                function Hit() {
-                    var s1 = document.getElementById('num1').value;
-                    var s2 = document.getElementById('num2').value;
+                <h3>投手自責分率計算</h3>
+                <h4>計算公式 = 失分 × 3 ÷ 投球局數</h4>
+                <div >
+                    <label for="number1">總投球局數:</label>
+                    <input type="text" size="10" id="number1" value="" />
+                </div>
+                <br />
+                <div>
+                    <label for="number2">總失分數:</label>
+                    <input type="text" size="10" id="number2" value="" />
+                </div>
+                <br />
+                <div>
+                    <button onclick=" ERA()" >計算</button>
+                </div>
+                <br />
+                <div>
+                    <label >投手自責分率為:</label>
+                    <input type="text" size="10" id="ERA" />
+                </div>
+                <p id="text"></p>
 
-                    var n1 = parseFloat(s1);
-                    var n2 = parseFloat(s2);
+                <script>
+                    function ERA() {
+                        var s1 = document.getElementById('number1').value;
+                        var s2 = document.getElementById('number2').value;
 
-                    var result2=parseFloat();
-                    result2 = s1 / s2;
-                    if (result2 > 0.5) {
-                        document.getElementById('hit').value = result2;
-                        result2 = document.getElementById('text2');
-                        text2.innerHTML = "太強了吧!";
+                        var n1 = parseInt(s1);
+                        var n2 = parseInt(s2);
 
-                    } else if (result2 <= 0.2) {
-                        document.getElementById('hit').value = result2;
-                        result2 = document.getElementById('text2');
-                        text2.innerHTML = "有待加強!";
-                    } else {
-                        document.getElementById('hit').value = result2;
-                        result2 = document.getElementById('text2');
-                        text2.innerHTML = ":)";
-                        return result2;
+                        var result;
+                        result = n2 * (3 / n1);
+                        if (result > 10) {
+                            document.getElementById('ERA').value = result;
+                            result = document.getElementById('text');
+                            text.innerHTML = "有待加強!";
+
+                        } else if (result < 1) {
+                            document.getElementById('ERA').value = result;
+                            result = document.getElementById('text');
+                            text.innerHTML = "太強了吧!";
+                        } else {
+                            document.getElementById('ERA').value = result;
+                            result = document.getElementById('text');
+                            text.innerHTML = ":)";
+                            return result;
+                        }
                     }
-                }
-            </script>
+                </script>
+            </div>
+            <div>
+                <h3>棒球打擊率計算器</h3>
+                <h4>擊球率=擊球總數/擊球總數</h4>
+                <div>
+                    <label for="num1">總安打數hits:</label>
+                    <input type="text" size="10" id="num1" value="" />
+                </div>
+                <br />
+                <div>
+                    <label for="num2" >總打數at bats:</label>
+                    <input type="text" size="10" id="num2" value="" />
+                </div>
+                <br />
+                <div>
+                    <button onclick=" Hit()">計算</button>
+                </div>
+                <br />
+                <div>
+                    <label for="result2" >棒球打擊率為:</label>
+                    <input type="text" size="10" id="hit" />
+                </div>
+                <p id="text2"></p>
+                <script>
+                    function Hit() {
+                        var s1 = document.getElementById('num1').value;
+                        var s2 = document.getElementById('num2').value;
+
+                        var n1 = parseFloat(s1);
+                        var n2 = parseFloat(s2);
+
+                        var result2 = parseFloat();
+                        result2 = s1 / s2;
+                        if (result2 > 0.5) {
+                            document.getElementById('hit').value = result2;
+                            result2 = document.getElementById('text2');
+                            text2.innerHTML = "太強了吧!";
+
+                        } else if (result2 <= 0.2) {
+                            document.getElementById('hit').value = result2;
+                            result2 = document.getElementById('text2');
+                            text2.innerHTML = "有待加強!";
+                        } else {
+                            document.getElementById('hit').value = result2;
+                            result2 = document.getElementById('text2');
+                            text2.innerHTML = ":)";
+                            return result2;
+                        }
+                    }
+                </script>
+            </div>
         </div>
-    </div>
 </body>
 </html>
